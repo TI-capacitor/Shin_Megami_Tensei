@@ -1,0 +1,48 @@
+smt1_fangame/
+├── .gitignore
+├── CMakeLists.txt
+├── README.md
+├── assets/                  # Non-code game files
+│   ├── audio/               # BGM (.ogg) and sound effects (.wav)
+│   ├── fonts/               # UI text fonts (.ttf)
+│   ├── graphics/            # Sprites, tilesheets, UI textures (.png)
+│   └── data/                # Static game databases
+│       ├── demons.json      # Demon stats, resistances, skills
+│       ├── items.json       # Consumables, weapons, armor
+│       └── maps/            # Grid layouts, event triggers, encounter zones
+├── src/                     # All source code files
+│   ├── main.cpp             # Game entry point
+│   ├── core/                # Engine fundamentals
+│   │   ├── Game.hpp
+│   │   ├── Game.cpp         # Main game loop, window, state machine management
+│   │   ├── Locator.hpp      # Service locator for audio/video access
+│   │   └── ResourceManager.hpp # Templates for caching textures, fonts, sounds
+│   ├── states/              # Game states (Finite State Machine)
+│   │   ├── State.hpp        # Abstract base class for states
+│   │   ├── StateMachine.hpp
+│   │   ├── TitleState.cpp   # Main menu
+│   │   ├── ExploreState.cpp # 1st-person grid exploration
+│   │   ├── BattleState.cpp  # Turn-based Press Turn or classic combat
+│   │   └── MenuState.cpp    # Party status, summoning, inventory screen
+│   ├── world/               # Dungeon crawling & exploration
+│   │   ├── Map.hpp
+│   │   ├── Map.cpp          # 2D array or grid parsing
+│   │   ├── Camera.hpp       # First-person view math/raycasting
+│   │   ├── Player.hpp       # Coordinates, orientation (N, S, E, W)
+│   │   └── Trigger.hpp      # Map events, tile interaction, teleporters
+│   ├── battle/              # Combat & Encounter engine
+│   │   ├── BattleEngine.hpp
+│   │   ├── Combatant.hpp    # Common base for Player, Party, and Enemy
+│   │   ├── PhaseManager.hpp # Player phase, Enemy phase loop
+│   │   ├── Formula.hpp      # Damage, accuracy, and evasion math
+│   │   └── TalkSystem.hpp   # Demon negotiation logic and dialogue trees
+│   ├── entities/            # RPG Data models
+│   │   ├── Party.hpp        # Active alignment, computer storage, MACA/Magnetite
+│   │   ├── Actor.hpp        # Human party members (Hero, Heroine, etc.)
+│   │   ├── Demon.hpp        # Recruited demons, fusion compatibility
+│   │   └── Skill.hpp        # Spells (Agilao, Zio) and physical skills
+│   └── ui/                  # User Interface components
+│       ├── Component.hpp    # Base class for UI elements
+│       ├── DialogBox.hpp    # Text scroll and choice prompts
+│       ├── Compass.hpp      # Mini-map / Direction indicator
+│       └── BattleHUD.hpp    # HP/MP bars and party panels
